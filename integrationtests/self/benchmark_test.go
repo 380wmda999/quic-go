@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"net"
 	"testing"
-
-	"github.com/quic-go/quic-go"
 )
 
 func BenchmarkHandshake(b *testing.B) {

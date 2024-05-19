@@ -6,6 +6,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/380wmda999/quic-go/congestion"
 	"io"
 	"net"
 	"reflect"
@@ -13,15 +14,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/quic-go/quic-go/internal/ackhandler"
-	"github.com/quic-go/quic-go/internal/flowcontrol"
-	"github.com/quic-go/quic-go/internal/handshake"
-	"github.com/quic-go/quic-go/internal/logutils"
-	"github.com/quic-go/quic-go/internal/protocol"
-	"github.com/quic-go/quic-go/internal/qerr"
-	"github.com/quic-go/quic-go/internal/utils"
-	"github.com/quic-go/quic-go/internal/wire"
-	"github.com/quic-go/quic-go/logging"
+	"github.com/380wmda999/quic-go/internal/ackhandler"
+	"github.com/380wmda999/quic-go/internal/flowcontrol"
+	"github.com/380wmda999/quic-go/internal/handshake"
+	"github.com/380wmda999/quic-go/internal/logutils"
+	"github.com/380wmda999/quic-go/internal/protocol"
+	"github.com/380wmda999/quic-go/internal/qerr"
+	"github.com/380wmda999/quic-go/internal/utils"
+	"github.com/380wmda999/quic-go/internal/wire"
+	"github.com/380wmda999/quic-go/logging"
 )
 
 type unpacker interface {
@@ -305,7 +306,7 @@ var newConnection = func(
 		// different from protocol.DefaultActiveConnectionIDLimit.
 		// If set to the default value, it will be omitted from the transport parameters, which will make
 		// old quic-go versions interpret it as 0, instead of the default value of 2.
-		// See https://github.com/quic-go/quic-go/pull/3806.
+		// See https://github.com/380wmda999/quic-go/pull/3806.
 		ActiveConnectionIDLimit:   protocol.MaxActiveConnectionIDs,
 		InitialSourceConnectionID: srcConnID,
 		RetrySourceConnectionID:   retrySrcConnID,
@@ -414,7 +415,7 @@ var newClientConnection = func(
 		// different from protocol.DefaultActiveConnectionIDLimit.
 		// If set to the default value, it will be omitted from the transport parameters, which will make
 		// old quic-go versions interpret it as 0, instead of the default value of 2.
-		// See https://github.com/quic-go/quic-go/pull/3806.
+		// See https://github.com/380wmda999/quic-go/pull/3806.
 		ActiveConnectionIDLimit:   protocol.MaxActiveConnectionIDs,
 		InitialSourceConnectionID: srcConnID,
 	}
@@ -2436,4 +2437,7 @@ func (s *connection) NextConnection() Connection {
 // connection ID length), and the size of the encryption tag.
 func estimateMaxPayloadSize(mtu protocol.ByteCount) protocol.ByteCount {
 	return mtu - 1 /* type byte */ - 20 /* maximum connection ID length */ - 16 /* tag size */
+}
+func (s *connection) SetCongestionControl(cc congestion.CongestionControl) {
+	s.sentPacketHandler.SetCongestionControl(cc)
 }

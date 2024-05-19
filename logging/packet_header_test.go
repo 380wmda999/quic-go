@@ -1,10 +1,8 @@
 package logging_test
 
 import (
-	"github.com/quic-go/quic-go/internal/protocol"
-	"github.com/quic-go/quic-go/internal/wire"
-	. "github.com/quic-go/quic-go/logging"
-
+	"github.com/380wmda999/quic-go/internal/protocol"
+	"github.com/380wmda999/quic-go/internal/wire"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )

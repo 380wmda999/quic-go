@@ -3,8 +3,6 @@ package http3
 import (
 	"errors"
 	"fmt"
-
-	"github.com/quic-go/quic-go"
 )
 
 // Error is returned from the round tripper (for HTTP clients)

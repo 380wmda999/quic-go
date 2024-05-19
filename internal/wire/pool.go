@@ -3,7 +3,7 @@ package wire
 import (
 	"sync"
 
-	"github.com/quic-go/quic-go/internal/protocol"
+	"github.com/380wmda999/quic-go/internal/protocol"
 )
 
 var pool sync.Pool

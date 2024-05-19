@@ -1,7 +1,7 @@
 package wire
 
 import (
-	"github.com/quic-go/quic-go/internal/protocol"
+	"github.com/380wmda999/quic-go/internal/protocol"
 )
 
 // A HandshakeDoneFrame is a HANDSHAKE_DONE frame

@@ -1,6 +1,6 @@
 package flowcontrol
 
-import "github.com/quic-go/quic-go/internal/protocol"
+import "github.com/380wmda999/quic-go/internal/protocol"
 
 type flowController interface {
 	// for sending
