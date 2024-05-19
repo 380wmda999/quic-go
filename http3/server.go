@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/380wmda999/quic-go"
 	"io"
 	"log/slog"
 	"net"

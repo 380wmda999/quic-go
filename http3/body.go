@@ -3,6 +3,7 @@ package http3
 import (
 	"context"
 	"errors"
+	"github.com/380wmda999/quic-go"
 	"io"
 )
 

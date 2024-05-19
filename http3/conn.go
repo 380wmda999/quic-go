@@ -3,13 +3,13 @@ package http3
 import (
 	"context"
 	"fmt"
+	"github.com/380wmda999/quic-go"
+	"github.com/380wmda999/quic-go/internal/protocol"
+	"github.com/380wmda999/quic-go/quicvarint"
 	"log/slog"
 	"net"
 	"sync"
 	"sync/atomic"
-
-	"github.com/380wmda999/quic-go/internal/protocol"
-	"github.com/380wmda999/quic-go/quicvarint"
 
 	"github.com/quic-go/qpack"
 )

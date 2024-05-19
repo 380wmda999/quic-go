@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"github.com/quic-go/qpack"
 	"io"
 	"net"
 	"net/http"
